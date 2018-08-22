@@ -18,10 +18,11 @@
     <div class="container">  
 
 
-       <h1> {{ post }} </h1>
-       <hr/>
-       <p> author: by {{post.author}} </p>
-       <font size="4" color="black"> {{post.text}} </font>
+        {% for date in dates %}
+
+            <p> {{ date }} </p>
+
+        {% endfor %}
 
     </div>   
     </body>
