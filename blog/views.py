@@ -17,6 +17,6 @@ def display_date(request):
     return render(request, 'blog/display_dates.html', {'dates': dates})
 
 
-def displayInd(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def displayInd(request, i):
+    post = get_object_or_404(Post, pk=i)
     return render(request, 'blog/display.html', {'post': post})
