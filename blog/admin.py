@@ -12,6 +12,10 @@ class PostAdmin(admin.ModelAdmin):
       (None,{'fields':['published_date']}),
 	]
 
+class GroupAdmin(admin.ModelAdmin):
+	fieldsets = [
+       ('Basic information',{'fields':['name']}),
+	]
 
 admin.site.register(Post,PostAdmin)
-admin.site.register(Group)
+admin.site.register(Group, GroupAdmin)
