@@ -20,3 +20,9 @@ def display_date(request):
 def displayInd(request, i):
     post = get_object_or_404(Post, pk=i)
     return render(request, 'blog/display.html', {'post': post})
+
+
+from django.contrib.auth import authenticate, login
+
+def login(request):
+    return render(request, 'blog/login.html', {})
