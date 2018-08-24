@@ -26,12 +26,15 @@
 
         
         {% for post in posts %}
-        <div style="border-width: 1px; border-color: #ccc; border-style: inset; border-radius: 5px;">
-            <h3>   {{ post }}  </h3>
-            <p> {{ post.text }} </p>
-        </div>
-        <br>
-         
+        
+           {% if post.author == request.user %}
+             <div style="border-width: 1px; border-color: #ccc; border-style: inset; border-radius: 5px;">
+                <h3>   {{ post }}  </h3>
+                <p> {{ post.text }} </p>
+             </div>
+             <br>
+           {% endif %}
+        
         {% endfor %}
        
 
