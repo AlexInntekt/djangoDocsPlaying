@@ -3,9 +3,11 @@ from django.utils import timezone
 from django.views import View
 from django.shortcuts import render, get_object_or_404
 
+
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') 
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    user = request.user
+    postsOfUser = user.post_set.all()
+    return render(request, 'blog/post_list.html', {'posts': postsOfUser})
 
 def display_date(request):
     posts = Post.objects.all()
@@ -23,6 +25,7 @@ def displayInd(request, i):
 
 
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 
 def login(request):
     return render(request, 'blog/login.html', {})
