@@ -5,8 +5,12 @@ from django.shortcuts import render, get_object_or_404
 
 
 def post_list(request):
+    postsOfUser = Post.objects.all()
     user = request.user
-    postsOfUser = user.post_set.all()
+    if request.user.is_authenticated:
+      postsOfUser = user.post_set.all()
+    else:
+      postsOfUser = None
     return render(request, 'blog/post_list.html', {'posts': postsOfUser})
 
 def display_date(request):

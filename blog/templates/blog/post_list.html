@@ -24,12 +24,14 @@
             <hr/>
         </div>
 
-
+        {% if posts == None %}
+           <h2> You are not logged in! </h2>
+           <p> You need to log in in order to create, edit and see your posts! </p> 
+        {% endif %}
         
+        {% if request.user.is_authenticated %}
 
-
-        
-        {% for post in posts %}
+          {% for post in posts %}
         
              <div style="border-width: 1px; border-color: #ccc; border-style: inset; border-radius: 5px;">
                 <h3>   {{ post }}  </h3>
@@ -38,9 +40,9 @@
              <br>
            
         
-        {% endfor %}
+          {% endfor %}
        
-
+        {% endif %}
     </div>   
     </body>
 </html>
