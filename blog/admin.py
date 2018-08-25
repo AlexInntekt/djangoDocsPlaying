@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Group
+from .models import Post, Group, Profile
 
 class PostInline(admin.TabularInline):
     model = Post
@@ -24,5 +24,6 @@ class GroupAdmin(admin.ModelAdmin):
 	inlines = [PostInline]
 
 
-admin.site.register(Post,PostAdmin)
+admin.site.register(Post, PostAdmin)
 admin.site.register(Group, GroupAdmin)
+admin.site.register(Profile)

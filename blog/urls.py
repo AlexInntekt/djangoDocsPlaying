@@ -12,6 +12,7 @@ urlpatterns = [
   path('display/<int:i>', views.displayInd, name='display'),
 
   path('login', auth_views.login, {'template_name': 'blog/login.html'}),
+  path('myprofile', views.myprofile, name='myprofile'),
 
 ]
 

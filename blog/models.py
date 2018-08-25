@@ -1,6 +1,11 @@
 
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
+
+User = settings.AUTH_USER_MODEL
+
+ #you can reversely access the model with: Group.objects.all().first().post_set.all().first().title
 
 class Group(models.Model):
     name = models.CharField(max_length=200)
@@ -26,4 +31,11 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-        #you can reversely access the model with: Group.objects.all().first().post_set.all().first().title
+       
+class Profile(models.Model):
+    user       = models.OneToOneField(User, on_delete=models.CASCADE,)
+    followers  = models.ManyToManyField(User, related_name='followers', blank=True)
+    following  = models.ManyToManyField(User, related_name='following', blank=True)
+
+    def __str__(self):
+        return self.user.username

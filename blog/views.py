@@ -33,3 +33,9 @@ from django.contrib.auth.models import User
 
 def login(request):
     return render(request, 'blog/login.html', {})
+
+def myprofile(request):
+    followers   = request.user.profile.followers.all()
+    followings  = request.user.profile.following.all()
+    return render(request, 'blog/myprofile.html', {'followers':followers, 'followings':followings
+        }) 
